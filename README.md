@@ -5,6 +5,10 @@ docker-compose build
 docker-compose up
 ```
 
+Visit: http://localhost:8888/ (username: admin, password: admin)
+
+For migrations simply restore over the default Archon database.
+
 ## Custom builds
 
 ```bash
