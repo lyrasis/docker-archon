@@ -1,13 +1,7 @@
 version: '3'
 services:
   archon:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        ARCHON_VERSION: 3.21.3
-        ARCHON_URL: https://github.com/archonproject/archon.git
-    image: archon
+    image: lyrasis/archon:3.21.3
     ports:
       - "8888:80"
     depends_on:
