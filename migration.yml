@@ -1,0 +1,39 @@
+version: '3'
+services:
+  archon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        ARCHON_VERSION: 3.21.3
+        ARCHON_URL: https://github.com/archonproject/archon.git
+    image: archon
+    ports:
+      - "8888:80"
+    depends_on:
+      - db
+  archivesspace:
+    image: archivesspace/archivesspace:2.4.1
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+      - "8082:8082"
+      - "8089:8089"
+      - "8090:8090"
+    depends_on:
+      - db
+    environment:
+      APPCONFIG_DB_URL: 'jdbc:mysql://db:3306/archivesspace?useUnicode=true&characterEncoding=UTF-8&user=as&password=as123'
+  db:
+    image: mysql:5.7
+    command: --character-set-server=utf8 --collation-server=utf8_unicode_ci --innodb_buffer_pool_size=2G --innodb_buffer_pool_instances=2
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      MYSQL_DATABASE: archon
+      MYSQL_USER: archon
+      MYSQL_PASSWORD: archon
+    volumes:
+      - ./archivesspace.sql:/docker-entrypoint-initdb.d/archivesspace.sql
+      - ./archon.sql:/docker-entrypoint-initdb.d/archon.sql

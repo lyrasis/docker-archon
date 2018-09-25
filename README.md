@@ -3,9 +3,13 @@
 ```bash
 docker-compose build
 docker-compose up
+
+# for migrations use: (wait 1-2 minutes for archivesspace to start)
+docker-compose -f migration.yml up
 ```
 
-Visit: http://localhost:8888/ (username: admin, password: admin)
+- Archon: http://localhost:8888/ (username: admin, password: admin)
+- ArchivesSpace: http://localhost:8080/ (username: admin, password: admin)
 
 For migrations simply restore over the default Archon database.
 
