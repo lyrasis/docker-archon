@@ -9,9 +9,11 @@ docker-compose -f migration.yml up
 ```
 
 - Archon: http://localhost:8888/ (username: admin, password: admin)
-- ArchivesSpace: http://localhost:8080/ (username: admin, password: admin)
+- ArchivesSpace: http://localhost:8089/ (username: admin, password: admin)
 
 For migrations simply restore over the default Archon database.
+
+FYI: for ArchivesSpace only the backend is enabled.
 
 ## Custom builds
 
