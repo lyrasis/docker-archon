@@ -29,4 +29,11 @@ docker tag archon:latest $DOCKER_ID_USER/archon:$VERSION
 docker push $DOCKER_ID_USER/archon:$VERSION
 ```
 
+## Archon migration tool
+
+```bash
+wget https://github.com/archivesspace/archon-migration/releases/download/v2.3.x/archon-migration.jar
+java -jar archon-migration.jar
+```
+
 ---
