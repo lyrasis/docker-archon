@@ -11,7 +11,18 @@ docker-compose -f migration.yml up
 - Archon: http://localhost:8888/ (username: admin, password: admin)
 - ArchivesSpace: http://localhost:8089/ (username: admin, password: admin)
 
-For migrations simply restore over the default Archon database. Run these:
+FYI: for ArchivesSpace only the backend is enabled.
+
+## Migrations
+
+If upgrading from an earlier (3.x) version:
+
+```sql
+DROP DATABASE archon;
+CREATE DATABASE archon;
+```
+
+Restore the Archon database. Next, run these:
 
 ```sql
 UPDATE archon.tblCore_Configuration
@@ -21,7 +32,12 @@ UPDATE archon.tblCore_Configuration
 SET Value = '$1$Gr2LN2uT$Fx3pLTiWW/psVf/WkUajV.' WHERE Directive = 'SA Password';
 ```
 
-FYI: for ArchivesSpace only the backend is enabled.
+To run the migration tool:
+
+```bash
+wget https://github.com/archivesspace/archon-migration/releases/download/v2.3.x/archon-migration.jar
+java -jar archon-migration.jar
+```
 
 ## Custom builds
 
@@ -41,13 +57,6 @@ VERSION=3.21.3
 DOCKER_ID_USER=lyrasis
 docker tag archon:latest $DOCKER_ID_USER/archon:$VERSION
 docker push $DOCKER_ID_USER/archon:$VERSION
-```
-
-## Archon migration tool
-
-```bash
-wget https://github.com/archivesspace/archon-migration/releases/download/v2.3.x/archon-migration.jar
-java -jar archon-migration.jar
 ```
 
 ---
