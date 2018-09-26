@@ -11,7 +11,15 @@ docker-compose -f migration.yml up
 - Archon: http://localhost:8888/ (username: admin, password: admin)
 - ArchivesSpace: http://localhost:8089/ (username: admin, password: admin)
 
-For migrations simply restore over the default Archon database.
+For migrations simply restore over the default Archon database. Run these:
+
+```sql
+UPDATE archon.tblCore_Configuration
+SET Value = 'default' WHERE Directive = 'Default Theme';
+
+UPDATE archon.tblCore_Configuration
+SET Value = '$1$Gr2LN2uT$Fx3pLTiWW/psVf/WkUajV.' WHERE Directive = 'SA Password';
+```
 
 FYI: for ArchivesSpace only the backend is enabled.
 
