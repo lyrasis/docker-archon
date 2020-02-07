@@ -30,6 +30,9 @@ SET Value = 'default' WHERE Directive = 'Default Theme';
 
 UPDATE archon.tblCore_Configuration
 SET Value = '$1$Gr2LN2uT$Fx3pLTiWW/psVf/WkUajV.' WHERE Directive = 'SA Password';
+
+UPDATE archon.tblCore_Configuration
+SET Value = '1' WHERE Directive = 'Public Enabled'
 ```
 
 To run the migration tool:
