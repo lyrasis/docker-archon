@@ -8,7 +8,7 @@ docker-compose up
 docker-compose -f migration.yml up
 ```
 
-- Archon: http://localhost:8888/ (username: admin, password: admin)
+- Archon: http://localhost:8888/ (username: sa, password: admin)
 - ArchivesSpace: http://localhost:8089/ (username: admin, password: admin)
 
 FYI: for ArchivesSpace only the backend is enabled.
