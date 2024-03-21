@@ -27,7 +27,10 @@ ADD archon.sql /archon.sql
 
 RUN chmod 755 /*.sh && \
     a2enmod rewrite && \
-    mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html
+    mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html && \
+    sed -i "s/display_errors = Off/display_errors = On/" /etc/php5/apache2/php.ini && \
+    sed -i "s/display_startup_errors = Off/display_startup_errors = On/" /etc/php5/apache2/php.ini && \
+    sed -i "s/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ALL/" /etc/php5/apache2/php.ini
 
 EXPOSE 80
 CMD ["./start-apache2.sh"]

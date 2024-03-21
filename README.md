@@ -1,11 +1,11 @@
 # Docker Archon
 
 ```bash
-docker-compose build
-docker-compose up
+docker compose build
+docker compose up
 
 # for migrations use: (wait 1-2 minutes for archivesspace to start)
-docker-compose -f migration.yml up
+docker compose -f migration.yml up
 ```
 
 - Archon: http://localhost:8888/ (username: sa, password: admin)
@@ -47,8 +47,8 @@ java -jar archon-migration.jar
 ```bash
 VERSION=3.21.3
 URL=https://github.com/archonproject/archon.git
-docker-compose build --build-arg ARCHON_VERSION=$BRANCH ARCHON_URL=$URL app
-docker-compose up
+docker compose build --build-arg ARCHON_VERSION=$BRANCH ARCHON_URL=$URL app
+docker compose up
 ```
 
 ## Docker hub
